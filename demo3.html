@@ -53,11 +53,14 @@
     <script src=./scripts/encryption/encryption-aes-gcm.js></script>
     <script src=./scripts/encryption/encryption-factory.js></script>
     <script src=./scripts/push-client.js></script>
-    <script src=./scripts/app-controller_demo3.js></script><script>
+    <script src=./scripts/app-controller_demo3.js></script>
+    
     <p> Click to send notification </p>
     <input type="button" value="Send Notification" onclick=request_notification() />
     <p> Enter text here </p>
       <input type="text" />
+    <script>
+    
     if (Notification.permission === 'default') {
           Notification.requestPermission(function (result) {
             if (result !== 'granted') {
