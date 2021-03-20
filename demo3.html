@@ -65,16 +65,6 @@
     
     
     <script>
-    
-    if (Notification.permission === 'default') {
-          Notification.requestPermission(function (result) {
-            if (result !== 'granted') {
-              reject(new Error('Bad permission result'));
-            }
-
-            resolve();
-          });
-        }
     function request_notification(){
       if (Notification.permission === 'default') {
           Notification.requestPermission(function (result) {
