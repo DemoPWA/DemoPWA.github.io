@@ -2,7 +2,8 @@ const queryString = self.location.search;
 const urlParams = new URLSearchParams(queryString);
 var sw_host = urlParams.get('host')
 console.log(sw_host)
-sw_host = sw_host.replace('\null','')
+
+// sw_host = sw_host.replace('\null','')
 
 importScripts('./scripts/libs/idb-keyval.js');
 importScripts(sw_host+'/scripts/analytics-sw.js');
