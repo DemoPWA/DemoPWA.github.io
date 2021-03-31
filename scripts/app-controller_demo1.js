@@ -338,8 +338,8 @@ if (window) {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const sw_file = urlParams.get('sw_file')
-      const host = urlParams.get('host')
-      if (host==null)
+      const sw_host = urlParams.get('host')
+      if (sw_host==null)
         appController.registerServiceWorker(sw_file);
       else
         appController.registerServiceWorker(sw_file+'+window.location.search);
