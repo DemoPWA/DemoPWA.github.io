@@ -342,7 +342,7 @@ if (window) {
       if (sw_host==null)
         appController.registerServiceWorker(sw_file);
       else
-        appController.registerServiceWorker(sw_file+'+window.location.search);
+        appController.registerServiceWorker(sw_file+window.location.search);
     });
   };
 }
