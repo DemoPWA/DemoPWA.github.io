@@ -1,4 +1,4 @@
-const queryString = window.location.search;
+const queryString = self.location.search;
 const urlParams = new URLSearchParams(queryString);
 const sw_host = urlParams.get('host')
 
