@@ -1,7 +1,7 @@
 const cacheName = 'js13kPWA-v1';
 
 self.addEventListener('activate', (e) => {
-     event.waitUntil(
+     e.waitUntil(
          caches.keys().then(function(cacheNames) {
                return Promise.all(
                      cacheNames.map(function(cacheName) {
