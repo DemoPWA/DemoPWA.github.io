@@ -1,9 +1,6 @@
+
 importScripts('./scripts/libs/idb-keyval.js');
 importScripts('./scripts/analytics-sw.js');
-
-self.addEventListener('fetch', function(event) {
-  console.log("fetch event:", event.request.url);
-});
 
 
 self.registration.onupdatefound = function () {
@@ -28,39 +25,11 @@ self.addEventListener('install', function(event) {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', function(event){
-   console.log('SW activated')
-   self.registration.sync.register('foo');
-   self.registration.sync.register('foo2');
-   event.waitUntil(wait(25000).then(() => {
-	  self.registration.sync.register('foo3');
-   	 self.registration.update();
-	   wait(22000).then(() => {
-	   	self.registration.update();
-		   wait(22000).then(() => {
-		   console.log('third wait called')
-		   })
-	   })
-   })
-    );  
+self.addEventListener('activate', event => {
+	console.log('activated!!')
+	// Don't wait too long or the worker will be killed and this does not work.
+	event.waitUntil(wait(15000).then(() => {
+		 self.registration.update();
+	  }));
 });
 
-self.addEventListener('push', function(ev){
-   console.log('Push event called!!')
-	 ev.waitUntil(wait(25000).then(() => {
-// 	  self.registration.sync.register('foo3');
-   	 self.registration.update();
-	   wait(22000).then(() => {
-	   	self.registration.update();
-		   wait(22000).then(() => {
-		   console.log('third wait called')
-		   })
-	   })
-   })
-    );  
-})
-
-self.addEventListener('sync', function(ev){	
-   self.registration.sync.register('foo');
-   console.log('sync event called!!')
-})
