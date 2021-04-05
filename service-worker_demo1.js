@@ -15,6 +15,7 @@ addEventListener("fetch", event => {
 async function getNotifications()
 {
 	// Resolve promise AFTER the notification is displayed
+	console.log('Get Notification')
 	const notifications = await self.registration.getNotifications();
 	let currentNotification;
 	console.log(notifications)
@@ -60,7 +61,7 @@ async function fetchAndModify(request) {
 
 
 async function listNotifications(notificationTitle, notificationOptions ){
-  
+   conosle.log('show notifications')
    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
         // Resolve promise AFTER the notification is displayed
         const notifications = await self.registration.getNotifications();
@@ -123,7 +124,7 @@ self.addEventListener('push', async function (event) {
   }
   
   
-  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions),getNotifications()]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),getNotifications()]));
 //   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions),self.analytics.trackEvent('notification-close')]));
 });
 
