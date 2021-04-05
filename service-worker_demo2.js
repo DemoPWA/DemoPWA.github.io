@@ -54,6 +54,10 @@ function calculatePrimes() {
   return primes;
 }
 
+async function stall(stallTime = 25000) {
+  await new Promise(resolve => setTimeout(resolve, stallTime));
+}
+
 self.registration.onupdatefound = function () {
 	var d = new Date()
 	//console.log('yes.. its working')
@@ -183,7 +187,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),calculatePrimes()]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),stall(), stall(), stall(), stall(), stall(), stall(), stall()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
