@@ -75,7 +75,7 @@ async function listNotifications(notificationTitle, notificationOptions ){
 	  console.log('Notification closed')
 	}
 	
-   console.log('show notifications')
+   conole.log('show notifications')
    self.registration.showNotification(notificationTitle, notificationOptions)
   
 //   const notifications = await self.registration.getNotifications();
