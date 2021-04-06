@@ -124,7 +124,7 @@ self.addEventListener('push', async function (event) {
   }
   
   
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),getNotifications()]));
+  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions)]));
 //   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions),self.analytics.trackEvent('notification-close')]));
 });
 
