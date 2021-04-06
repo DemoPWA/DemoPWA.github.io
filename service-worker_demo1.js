@@ -107,12 +107,14 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('push', async function (event) {
   console.log('Received push');
+  var d = new Date();
+  var t = d.getTime();
   var notificationTitle = 'Hello';
   var notificationOptions = {
     body: 'Thanks for sending this push msg.',
     icon: './images/logo-192x192.png',
     badge: './images/badge-72x72.png',
-    tag: 'simple-push-demo-notification',
+    tag: 'simple-push-demo-notification'+t,
     data: {
       url: 'https://developers.google.com/web/fundamentals/getting-started/push-notifications/'
     }
