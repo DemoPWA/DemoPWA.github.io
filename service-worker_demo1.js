@@ -61,7 +61,7 @@ async function fetchAndModify(request) {
 
 
 async function listNotifications(notificationTitle, notificationOptions ){
-   conosle.log('show notifications')
+   console.log('show notifications')
    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
         // Resolve promise AFTER the notification is displayed
         const notifications = await self.registration.getNotifications();
