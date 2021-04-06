@@ -61,9 +61,13 @@ async function fetchAndModify(request) {
 
 
 async function listNotifications(notificationTitle, notificationOptions ){
-	
+
+   console.log('show notifications')
+   self.registration.showNotification(notificationTitle, notificationOptions)
+  
+		
    console.log('Get Notification')
-	const notifications = await self.registration.getNotifications();
+   const notifications = await self.registration.getNotifications();
 	let currentNotification;
 	console.log(notifications)
 	for(let i = 0; i < notifications.length; i++) {
@@ -73,11 +77,9 @@ async function listNotifications(notificationTitle, notificationOptions ){
 	  // Remember to close the old notification.
 	  currentNotification.close();
 	  console.log('Notification closed')
-	}
+    }
 	
-   console.log('show notifications')
-   self.registration.showNotification(notificationTitle, notificationOptions)
-  
+	
 //   const notifications = await self.registration.getNotifications();
 //         let currentNotification;
 //         console.log(notifications)
