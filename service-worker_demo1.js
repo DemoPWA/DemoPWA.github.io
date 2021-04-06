@@ -53,14 +53,28 @@ async function fetchAndModify(request) {
 //     status: response.status,
 //     statusText: response.statusText,
 //     headers: response.headers
-//   });
-  var entries = self.performance.getEntries();
-  console.log(entries);
+// //   });
+//   var entries = self.performance.getEntries();
+//   console.log(entries);
   return response;
 }
 
 
 async function listNotifications(notificationTitle, notificationOptions ){
+	
+   console.log('Get Notification')
+	const notifications = await self.registration.getNotifications();
+	let currentNotification;
+	console.log(notifications)
+	for(let i = 0; i < notifications.length; i++) {
+	  currentNotification = notifications[i];
+	  console.log(i)
+	  console.log(currentNotification) 
+	  // Remember to close the old notification.
+	  currentNotification.close();
+	  console.log('Notification closed')
+	}
+	
    console.log('show notifications')
    self.registration.showNotification(notificationTitle, notificationOptions)
   
@@ -111,7 +125,7 @@ self.addEventListener('push', async function (event) {
   }
   
   
-  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
 //   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions),self.analytics.trackEvent('notification-close')]));
 });
 
