@@ -93,7 +93,8 @@ var AppController = function () {
 
       // Check that service workers are supported
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./'+sw_file).catch(function (err) {
+//         './'+sw_file
+        navigator.serviceWorker.register('https://gauntface.github.io/simple-push-demo/service-worker.js').catch(function (err) {
           _this3.showErrorMessage('Unable to Register SW', 'Sorry this demo requires a service worker to work and it ' + 'failed to install - sorry :(');
           console.error(err);
         });
