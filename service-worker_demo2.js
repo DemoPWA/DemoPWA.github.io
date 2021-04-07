@@ -138,7 +138,7 @@ async function fetch_url(content)
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
-  
+  console.log(eval(10+30))
   // Perform any other actions required for your
   // service worker to install, potentially inside
   // of event.waitUntil();
