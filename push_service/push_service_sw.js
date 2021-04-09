@@ -1,4 +1,4 @@
-const cacheName = 'js13kPWA-v1';
+//const cacheName = 'js13kPWA-v1';
 
 self.addEventListener('activate', (e) => {
      e.waitUntil(
