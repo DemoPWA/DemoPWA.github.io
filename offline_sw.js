@@ -7,8 +7,10 @@ self.addEventListener('fetch', (e) => {
     if (r) { return r; }
     const response = await fetch(e.request);
     const cache = await caches.open(cacheName);
+    if ('snippet.js' not in e.request.url){
     console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
     cache.put(e.request, response.clone());
+    }
     return response;
   })());
 });
