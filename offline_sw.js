@@ -7,7 +7,7 @@ self.addEventListener('fetch', (e) => {
     if (r) { return r; }
     const response = await fetch(e.request);
     const cache = await caches.open(cacheName);
-    if (e.request.url.indexOf('snippet.js')<0){
+    if (e.request.url.indexOf('snippets.js')<0){
         console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
         cache.put(e.request, response.clone());
     }
