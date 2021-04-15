@@ -1,5 +1,5 @@
 
-importScripts('../../scripts/encryption/helpers.js')
+// importScripts('../../scripts/encryption/helpers.js')
 
 var push_count = 0
 
@@ -22,7 +22,7 @@ self.addEventListener('push', function(ev){
       //renew subscription
         var options = {
           userVisibleOnly: true,
-          applicationServerKey: base64UrlToUint8Array('BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiA' + 'pwXKpNcF1rRPF3foIiBHXRdJI2Qhumhf6_LFTeZaNndIo')
+          applicationServerKey: 'BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiA' + 'pwXKpNcF1rRPF3foIiBHXRdJI2Qhumhf6_LFTeZaNndIo'
         };
         self.registration.pushManager.getSubscription().then(function(subscription) {
             subscription.unsubscribe().then(function(successful) {
