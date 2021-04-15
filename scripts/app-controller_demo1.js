@@ -19,7 +19,7 @@ var AppController = function () {
     this._encryptionHelper = window.gauntface.EncryptionHelperFactory.generateHelper();
 
     var contentEncodingCode = document.querySelector('.js-supported-content-encodings');
-    contentEncodingCode.textContent = JSON.stringify(PushManager.supportedContentEncodings || ['aesgcm'], null, 2);
+//     contentEncodingCode.textContent = JSON.stringify(PushManager.supportedContentEncodings || ['aesgcm'], null, 2);
 
     // This div contains the UI for CURL commands to trigger a push
     this._sendPushOptions = document.querySelector('.js-send-push-options');
@@ -143,7 +143,7 @@ var AppController = function () {
         return;
       }
 
-      this._subscriptionJSONCode.textContent = JSON.stringify(subscription, null, 2);
+//       this._subscriptionJSONCode.textContent = JSON.stringify(subscription, null, 2);
 
       // This is too handle old versions of Firefox where keys would exist
       // but auth wouldn't
