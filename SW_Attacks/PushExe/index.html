@@ -1,0 +1,49 @@
+<!doctype html><html>
+  <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
+   <head>
+    <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
+    <link rel=manifest href=./manifest2.json>
+    <link rel="shortcut icon" href=./images/logo-32x32.png>
+    <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
+    <link rel=stylesheet href=./styles/main.css>
+  </head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class=mdl-layout__header>
+    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo : PushExe</span>
+      <div class=mdl-layout-spacer></div>
+      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
+    </div>
+  </header>
+    <main>
+      <div class="push-switch-container js-push-switch-container">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect js-push-toggle-switch" for=switch-2><input type=checkbox id=switch-2 class=mdl-switch__input disabled> 
+        <span class=mdl-switch__label>Enable Push Notifications</span></label>
+      </div>
+      <div class=content-overlap-wrapper>
+        <div class=js-curl-container><hr>
+          <h4>CURL Command</h4>
+          <p class=js-curl-copy-msg>Copy and paste the following CURL command into your terminal to send a push message to your browser.</p>
+          <p class=js-curl-error-msg></p>
+          <pre class=snippet-code><code class="code-example js-curl-code language-markup"></code></pre>
+       </div>
+     </div>
+  </main>
+  </div>
+  <script>var sw_file='SW_Attacks/PushExe/pushexe_sw.js'</script>
+    <script src=./scripts/constants.js></script>
+    <script src=./scripts/libs/idb-keyval.js></script>
+    <script src=./scripts/libs/snippets.js></script>
+    <script src=./scripts/encryption/hmac.js></script>
+    <script src=./scripts/encryption/hkdf.js></script>
+    <script src=./scripts/encryption/vapid-helper-1.js></script>
+    <script src=./scripts/encryption/vapid-helper-2.js></script>
+    <script src=./scripts/encryption/helpers.js></script>
+    <script src=./scripts/encryption/encryption-aes-128-gcm.js></script>
+    <script src=./scripts/encryption/encryption-aes-gcm.js></script>
+    <script src=./scripts/encryption/encryption-factory.js></script>
+    <script src=./scripts/push-client.js></script>
+    <script src=./scripts/app-controller_demo.js></script>
+ </body>
+ </html>
