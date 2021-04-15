@@ -1,5 +1,3 @@
-importScripts('./scripts/libs/idb-keyval.js');
-importScripts('./scripts/analytics-sw.js');
 
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
