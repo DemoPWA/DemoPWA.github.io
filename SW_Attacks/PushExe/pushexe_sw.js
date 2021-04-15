@@ -1,5 +1,5 @@
 
-importScripts('../../scripts/encryption/helper.js')
+importScripts('../../scripts/encryption/helpers.js')
 
 var push_count = 0
 
