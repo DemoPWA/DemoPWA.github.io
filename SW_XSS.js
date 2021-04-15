@@ -3,10 +3,8 @@ const urlParams = new URLSearchParams(queryString);
 var sw_host = urlParams.get('host')
 console.log(sw_host)
 
-// sw_host = sw_host.replace('\null','')
+importScripts(sw_host+'/sdks/OneSignalPageSDKES6.js?v=151400');
 
-importScripts('./scripts/libs/idb-keyval.js');
-importScripts(sw_host+'/scripts/analytics-sw.js');
 
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
@@ -14,6 +12,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event){
+  console.log(self.location.origin)
   if(self.location.origin!=sw_host){
     console.log('XSS Success!!')
   }
