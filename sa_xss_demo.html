@@ -65,7 +65,8 @@
 	<script type='text/javascript'>
 	function register_sw(){
 		// /xssdemo/SW_XSS/
-		navigator.serviceWorker.register('./SW_XSS.js').then(function(registration) {
+
+		navigator.serviceWorker.register('./SW_XSS.js'+window.location.search).then(function(registration) {
 			console.log('Service worker registration succeeded:', registration);
 		  }, /*catch*/ function(error) {
 			console.log('Service worker registration failed:', error);
