@@ -20,9 +20,17 @@
       <div class="push-switch-container js-push-switch-container">
         <p>Please Enable Push Notifications and use the curl code shown after to send push notifications. Please ensure to close any page from this origin. In browsers where attack is success, no notification will be shown although SW will be activated. In mitigated browsers, default notification will be shown.</p>
         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect js-push-toggle-switch" for=switch-2><input type=checkbox id=switch-2 class=mdl-switch__input disabled> 
-        <span class=mdl-switch__label>Enable Push Notifications</span></label>
+        <span class=mdl-switch__label>Enable Push Notifications</span></label>        
       </div>
+      
       <div class=content-overlap-wrapper>
+        <div class="send-push-options js-send-push-options">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label payload-textfield js-payload-textfield-container hidden">
+              <input class="mdl-textfield__input js-payload-textfield" type=text id=payload-textfield> 
+              <label class=mdl-textfield__label for=payload-textfield>Add Payload Text</label>
+            </div>
+        </div>
+
         <div class=js-curl-container><hr>
           <h4>CURL Command</h4>
           <p class=js-curl-copy-msg>Copy and paste the following CURL command into your terminal to send a push message to your browser.</p>
