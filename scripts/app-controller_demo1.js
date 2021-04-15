@@ -169,11 +169,11 @@ var AppController = function () {
         var curlCommand = 'curl "' + requestDetails.endpoint + '" --request POST';
         var curlError = null;
 
-        document.querySelector('.js-endpoint').textContent = requestDetails.endpoint;
-        var headersList = document.querySelector('.js-headers-list');
-        while (headersList.hasChildNodes()) {
-          headersList.removeChild(headersList.firstChild);
-        }
+//         document.querySelector('.js-endpoint').textContent = requestDetails.endpoint;
+//         var headersList = document.querySelector('.js-headers-list');
+//         while (headersList.hasChildNodes()) {
+//           headersList.removeChild(headersList.firstChild);
+//         }
         Object.keys(requestDetails.headers).forEach(function (header) {
           var liElement = document.createElement('p');
           liElement.innerHTML = '<span>' + header + '</span>: ' + ('' + requestDetails.headers[header]);
