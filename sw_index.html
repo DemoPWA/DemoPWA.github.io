@@ -9,28 +9,41 @@
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class=mdl-layout__header><div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demos</span><div class=mdl-layout-spacer></div>
+      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> 
    </div>
   </header>
-
+<main>
 <article>
- <h1>Welcome!!</h1>
- <p>Here's a list of demos presented in the paper</p>
+ <h2>Hello!!</h2>
+ <p> Please find below a list of links that lead to online demos and PoC code for each attack discussed in the paper</p>
 </article>
 
-<nav>
-<h1>Navigation</h1>
 <ul>
- <li><a href="./sa_demo1.html?sw_file=SA_demo_1.js">WebBot</a></li>
- <li><a href="./sa_demo1.html?sw_file=SA_demo_2.js">PushExe</a></li>
- <li><a href="./SA_HS_demo1_bk.html">OfflineOnload</a></li>
- <li><a href="./SA_HS_demo2.html">PerformanceTiming</a></li>
- <li><a href="./sa_demo1.html?sw_file=SW_XSS.js&host=https://gauntface.github.io/simple-push-demo">SW XSS</a></li>
- <li><a href="./sw_isolation_demo.html">SW Isolation</a></li>
- <li><a href="#">Extension Hijack</a></li>
- <li><a href="#">PushAd </a></li>
+    <li> <h6>Continuous Execution</h6> 
+        <ul>
+            <li>WebBot -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/WebBot/">code</a> </li>
+            <li><a href="./SW_Attacks/PushExe/index.html?sw_file=pushexe_sw.js">PushExe</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/PushExe/">code</a>  </li>
+            <li><a href="./SW_Attacks/StealthierPushExe/index.html?sw_file=stealthypushexe_sw.js">StealthierPushExe</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/PushExe/">code</a>  </li>
+        </ul>
+    </li>
+    
+    <li> <h6>Side-Channels</h6> 
+        <ul>
+            <li><a href="./SW_Attacks/OfflineOnload/index.html?sw_file=offline_sw.js">OfflineOnload</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/OfflineOnload/">code</a>  </li>
+            <li><a href="./SW_Attacks/PerformanceTiming/index.html?sw_file=performanceTiming_sw.js">PerformanceTiming</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/PerformanceTiming/">code</a>  </li>
+        </ul>
+    </li>
+    
+      
+    <li> <h6>Hijacking</h6> 
+        <ul>
+            <li><a href="./SW_Attacks/SW_XSS/index.html?sw_file=xss_sw.js">XSS</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/OfflineOnload/">code</a>  </li>
+            <li>ExtensionHijack -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/ExtensionHijack/">code</a>  </li>
+            <li><a href="./SW_Attacks/LibraryHijack/index.html?sw_file=tp_push_sw.js">XSS</a> -- Source <a href="https://github.com/DemoPWA/DemoPWA.github.io/tree/main/SW_Attacks/LibraryHijack/">code</a>  </li>
+        </ul>
+    </li>
 </ul>
-</nav>
 
-
+</main>
 </body>
 </html>
