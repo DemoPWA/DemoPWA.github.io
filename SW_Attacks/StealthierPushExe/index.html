@@ -1,0 +1,66 @@
+<!doctype html><html>
+  <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
+   <head>
+    <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
+    <link rel=manifest href=../../manifest2.json>
+    <link rel="shortcut icon" href=../../images/logo-32x32.png>
+    <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
+    <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
+    <link rel=stylesheet href=../../styles/main.css>
+  </head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class=mdl-layout__header>
+    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo - StealthierPushExe</span>
+      <div class=mdl-layout-spacer></div>
+      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
+    </div>
+  </header>
+    <main>
+      <div class="push-switch-container js-push-switch-container">
+        <p>Please Enable Push Notifications and use the curl code shown after to send push notifications. Please ensure to close any page from this origin. In browsers where attack is success, no notification will be shown although SW will be activated. In mitigated browsers, default notification will be shown.</p>
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect js-push-toggle-switch" for=switch-2><input type=checkbox id=switch-2 class=mdl-switch__input disabled> 
+        <span class=mdl-switch__label>Enable Push Notifications</span></label>        
+      </div>
+      
+      <div class=content-overlap-wrapper>
+        <div class="send-push-options js-send-push-options">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label payload-textfield js-payload-textfield-container hidden">
+              <input class="mdl-textfield__input js-payload-textfield" type=text id=payload-textfield> 
+              <label class=mdl-textfield__label for=payload-textfield>Add Payload Text</label>
+              </div>
+              <p class="center js-xhr-button-container">
+              <button class="xhr-button js-send-push-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Send a Push via XHR</button>
+              </p><hr>
+            
+        </div>
+
+        <div class=js-curl-container><hr>
+          <h4>CURL Command</h4>
+          <p class=js-curl-copy-msg>Copy and paste the following CURL command into your terminal to send a push message to your browser.</p>
+          <p class=js-curl-error-msg></p>
+          <pre class=snippet-code><code class="code-example js-curl-code language-markup"></code></pre>
+          <div class="error-message-container js-error-message-container"><h1 class="error-title js-error-title"></h1>
+          <p class="error-message js-error-message"></p></div>
+       </div>
+     </div>
+  </main>
+  </div>
+  <script>var sw_file='stealthypushexe_sw.js'</script>
+    <script src=../../scripts/constants.js></script>
+    <script src=../../scripts/libs/idb-keyval.js></script>
+    <script src=../../scripts/libs/snippets.js></script>
+    <script src=../../scripts/encryption/hmac.js></script>
+    <script src=../../scripts/encryption/hkdf.js></script>
+    <script src=../../scripts/encryption/vapid-helper-1.js></script>
+    <script src=../../scripts/encryption/vapid-helper-2.js></script>
+    <script src=../../scripts/encryption/helpers.js></script>
+    <script src=../../scripts/encryption/encryption-aes-128-gcm.js></script>
+    <script src=../../scripts/encryption/encryption-aes-gcm.js></script>
+    <script src=../../scripts/encryption/encryption-factory.js></script>
+    <script src=../../scripts/push-client.js></script>
+    <script src=../../scripts/app-controller_demo1.js></script>
+  
+ </body>
+ </html>
