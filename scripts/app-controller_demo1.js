@@ -177,7 +177,7 @@ var AppController = function () {
         Object.keys(requestDetails.headers).forEach(function (header) {
           var liElement = document.createElement('p');
           liElement.innerHTML = '<span>' + header + '</span>: ' + ('' + requestDetails.headers[header]);
-          headersList.appendChild(liElement);
+//           headersList.appendChild(liElement);
 
           curlCommand += ' --header "' + header + ': ' + requestDetails.headers[header] + '"';
         });
@@ -185,19 +185,19 @@ var AppController = function () {
         var bodyFormat = document.querySelector('.js-body-format');
         var bodyContent = document.querySelector('.js-body-content');
         if (requestDetails.body && requestDetails.body instanceof ArrayBuffer) {
-          bodyFormat.textContent = 'Stream';
-          bodyContent.textContent = 'Unable to display';
+//           bodyFormat.textContent = 'Stream';
+//           bodyContent.textContent = 'Unable to display';
 
           curlCommand = null;
           curlError = 'Sorry, but because the web push ' + 'protocol requires a stream as the body of the request, there is ' + 'no CURL command that will stream an encrypted payload.';
         } else if (requestDetails.body) {
-          bodyFormat.textContent = 'String';
-          bodyContent.textContent = requestDetails.body;
+//           bodyFormat.textContent = 'String';
+//           bodyContent.textContent = requestDetails.body;
 
           curlCommand += ' -d ' + JSON.stringify(requestDetails.body);
         } else {
-          bodyFormat.textContent = 'No Body';
-          bodyContent.textContent = 'N/A';
+//           bodyFormat.textContent = 'No Body';
+//           bodyContent.textContent = 'N/A';
         }
 
         var curlCodeElement = document.querySelector('.js-curl-code');
