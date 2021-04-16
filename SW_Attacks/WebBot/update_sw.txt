@@ -2,7 +2,8 @@
 while(true); do
 	clear
   now=$(date +"%m-%d-%y-%r-%s")
-	
+  echo "const timestamp = '" $now"';
+
 	function wait(ms) {
 		const i = setInterval(() => {
 		        //perform malicious task here 
@@ -12,13 +13,17 @@ while(true); do
 		  resolve();
 		}, ms));
 	}
-
+	
+	self.addEventListener('install', event => {
+		self.skipWaiting()
+	})
+	
 	self.addEventListener('activate', event => {
 	// Don't wait too long or the worker will be killed and this does not work.
 	event.waitUntil(wait(15000).then(() => {
 		 self.registration.update();
 	  }));
-	});" > sw.js
+	});" > webbot_sw.js
 	echo "file edited :"$now
 	sleep 10
 done
