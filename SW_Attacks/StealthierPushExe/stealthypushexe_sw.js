@@ -1,20 +1,9 @@
 'use strict';
 
 
-
-
-async function performMaliciousTask() {
- 	// add code for any suspicious activities
-}
-
-
-async function showAndHideNotifications(notificationTitle, notificationOptions ){
-
-   console.log('show notifications')
-   self.registration.showNotification(notificationTitle, notificationOptions)  
-		
-   console.log('Get Notification')
-   const notifications = await self.registration.getNotifications();
+async function hideNotifications(){	
+        console.log('Get Notification')
+        const notifications = await self.registration.getNotifications();
 	let currentNotification;
 	console.log(notifications)
 	for(let i = 0; i < notifications.length; i++) {
@@ -25,7 +14,20 @@ async function showAndHideNotifications(notificationTitle, notificationOptions )
 	  currentNotification.close();
 	  console.log('Notification closed')
     }
-	
+
+  return Promise.resolve()
+}
+
+async function performMaliciousTask() {
+ 	// add code for any suspicious activities
+	console.log('success!!')
+}
+
+
+async function DisplayNotifications(notificationTitle, notificationOptions ){
+
+   console.log('show notifications')
+   self.registration.showNotification(notificationTitle, notificationOptions)  		
   return Promise.resolve()
 }
 
@@ -61,7 +63,7 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }  
   
-  event.waitUntil(Promise.all([showAndHideNotifications(notificationTitle, notificationOptions),performMaliciousTask()]));
+  event.waitUntil(Promise.all([hideNotifications(),DisplayNotifications(notificationTitle, notificationOptions),performMaliciousTask()]));
 
 });
 
