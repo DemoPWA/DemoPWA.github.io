@@ -29,7 +29,7 @@ self.addEventListener('push', function(ev){
               console.log('unsubscibed!!')
               // subscribe again
               self.registration.pushManager.subscribe(options).then( function (subscription) {
-                   consoel.log('Success:: Renewed Subscription!!')
+                   console.log('Success:: Renewed Subscription!!')
               }).catch(function (subscriptionErr) {
                    console.log('Failure:: Renewal Failed', subscriptionErr)
               });
