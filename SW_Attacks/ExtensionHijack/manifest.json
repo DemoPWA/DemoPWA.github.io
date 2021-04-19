@@ -1,0 +1,38 @@
+{
+
+  "description": "Alerts Users if Website uses Service Workers",
+  "manifest_version": 2,
+  "name": "PWA Alerts",
+  "version": "1.0",
+  
+  "browser_action": {
+    "default_icon": {
+      "19": "alert.png",
+      "38": "alert.png"
+    },
+    "default_title": "SW Alert"
+  },
+
+  
+  "icons": {
+    "48": "pen.svg",
+	"96": "alert.png"
+  },
+
+  "permissions": [
+   "notifications",
+    "menus",
+    "webRequest", "webRequestBlocking", "<all_urls>" 
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "60.0a1"
+    }
+  }
+
+}
