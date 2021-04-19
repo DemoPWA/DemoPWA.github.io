@@ -1,4 +1,9 @@
-//const cacheName = 'js13kPWA-v1';
+
+
+self.addEventListener('push', (e) => {
+     //show notifications
+})
+
 
 self.addEventListener('activate', (e) => {
      e.waitUntil(
@@ -10,17 +15,12 @@ self.addEventListener('activate', (e) => {
                                return cache.match('/images/logo-32x32.png').then(function(response) {
                                  if (response) {
                                    console.log(' Found response in cache:', response);
+                                    //send cache details secretly to third-party server
                                  }
                                })
-                             })
-//                              const r = await caches.match('/images/logo-32x32.png');
-//                              conosle.log(r)
+                             })                   
                      })
                  )
          })
-       )
-//     const r = await caches.match(e.request);
-   
-//     if (r) { return r; }
- 
+       ) 
 });
