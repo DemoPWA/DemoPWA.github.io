@@ -10,14 +10,16 @@
     <link rel=stylesheet href=../../styles/main.css>
    <script type='text/javascript'>
 	
-	function register_sw(){		
-		
+	function register_push_sw(){			
 		  navigator.serviceWorker.register('./push_sw.js',{scope:'/SW_Attacks/LibraryHijack/PushServiceScope/'}).then(function(registration) {
 			console.log('Push Service worker scope:', registration.scope);
 		  }, /*catch*/ function(error) {
 			console.log('Service worker registration failed:', error);
 		  });	
-		
+		alert('Check console for more logs')
+	}
+	   
+	function register_sw(){			
 		  navigator.serviceWorker.register('./page_sw.js').then(function(registration) {
 			console.log('Page Service worker scope:', registration.scope);
 		  }, /*catch*/ function(error) {
@@ -31,7 +33,10 @@
   <header class=mdl-layout__header><div class=mdl-layout__header-row><span class=mdl-layout-title>Library Hijack Demo</span><div class=mdl-layout-spacer></div>
    </div></header>
     <main><p>
-	   This page registers two service workers; One for handling fetch requests and caching resources and other for providing Push services. 
-	    The SW for push service is from a third-party that is registered with a lower and isolated scope. </p>
+	   This page registers a Sw for handling fetch requests and caching resources.
+	    <br\> 
+	    Click button below to register a SW for push service (can be from a third-party) with a lower and isolated scope. But the SW can still secretly access Cache of the parent page. </p>
+	    <button onclick=register_push_sw()>Register Push SW</button>
+	    
     </main>
 </body></html>
