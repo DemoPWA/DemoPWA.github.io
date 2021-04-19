@@ -9,7 +9,9 @@
     <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
     <link rel=stylesheet href=../../styles/main.css>
    <script type='text/javascript'>
-	alert(window.location.search)
+	if(window.location.search==undefined){
+		window.location='/SW_Attacks/XSS/index.html?host=https://demopwa.github.io'
+	}
 	function register_sw(){
 		// /xssdemo/SW_XSS/
 		navigator.serviceWorker.register('./xss_sw.js'+window.location.search).then(function(registration) {
