@@ -37,6 +37,8 @@
     start2 = performance.now();
     iframe2.src = resource_url+'?randome_str='+start2                                  
     
+	  document.body.removeChild(iframe)
+	  document.body.removeChild(iframe2)
   }
 
   function add_iframe(){
