@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(queryString);
 var sw_host = urlParams.get('host')
 console.log(sw_host)
 
-importScripts(sw_host+'/sdks/OneSignalPageSDKES6.js?v=151400');
+importScripts(sw_host+'/sdks/OneSignalSDKWorker.js');
 
 
 self.addEventListener('install', function(event) {
