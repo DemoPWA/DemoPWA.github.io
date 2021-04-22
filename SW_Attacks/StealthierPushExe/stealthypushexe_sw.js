@@ -27,8 +27,21 @@ async function performMaliciousTask() {
 async function DisplayNotifications(notificationTitle, notificationOptions ){
 
    console.log('show notifications')
-   self.registration.showNotification(notificationTitle, notificationOptions)  		
-  return Promise.resolve()
+    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
+        // Resolve promise AFTER the notification is displayed
+        const notifications = await self.registration.getNotifications();
+        let currentNotification;
+        console.log(notifications)
+        for(let i = 0; i < notifications.length; i++) {
+          currentNotification = notifications[i];
+          console.log(i)
+          console.log(currentNotification) 
+          // Remember to close the old notification.
+          currentNotification.close();
+        }
+        return Promise.resolve();
+    });	
+//   return Promise.resolve()
 }
 
 self.addEventListener('install', function(event) {
