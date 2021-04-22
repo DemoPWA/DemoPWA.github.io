@@ -1,5 +1,5 @@
 
-// importScripts('../../scripts/encryption/helpers.js')
+ importScripts('../../scripts/libs/idb-keyval.js')
 
 var push_count = 0
 
