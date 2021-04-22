@@ -21,6 +21,15 @@ async function hideNotifications(){
 async function performMaliciousTask() {
  	// add code for any suspicious activities
 	console.log('success!!')
+
+	const i = setInterval(() => {
+		console.log('Action performed!!!')
+	}, 100);
+	
+	return new Promise(resolve => setTimeout(() => {
+	  clearInterval(i);
+	  resolve();
+	}, 25000));
 }
 
 
