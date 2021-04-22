@@ -25,7 +25,7 @@ async function performMaliciousTask() {
 // 	const i = setInterval(() => {
 // 		console.log('Action performed!!!')
 // 	}, 1000);
-	w Promise(resolve => setTimeout(() => {
+// 	w Promise(resolve => setTimeout(() => {
 // 	  clearInt
 // 	return neerval(i);
 // 	  resolve();
