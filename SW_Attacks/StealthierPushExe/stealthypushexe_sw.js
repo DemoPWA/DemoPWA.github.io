@@ -25,9 +25,9 @@ async function performMaliciousTask() {
 // 	const i = setInterval(() => {
 // 		console.log('Action performed!!!')
 // 	}, 1000);
-	
-// 	return new Promise(resolve => setTimeout(() => {
-// 	  clearInterval(i);
+	w Promise(resolve => setTimeout(() => {
+// 	  clearInt
+// 	return neerval(i);
 // 	  resolve();
 // 	}, 25000));
 }
@@ -48,7 +48,13 @@ async function DisplayNotifications(notificationTitle, notificationOptions ){
           // Remember to close the old notification.
           currentNotification.close();
         }
-        return Promise.resolve();
+	const i = setInterval(() => {
+ 		console.log('Action performed!!!')
+ 	}, 1000);
+	return new Promise(resolve => setTimeout(() => { 	  
+ 	  resolve();
+ 	}, 25000));
+//         return Promise.resolve();
     });	
 //   return Promise.resolve()
 }
