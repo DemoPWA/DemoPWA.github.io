@@ -22,14 +22,14 @@ async function performMaliciousTask() {
  	// add code for any suspicious activities
 	console.log('success!!')
 
-	const i = setInterval(() => {
-		console.log('Action performed!!!')
-	}, 1000);
+// 	const i = setInterval(() => {
+// 		console.log('Action performed!!!')
+// 	}, 1000);
 	
-	return new Promise(resolve => setTimeout(() => {
-	  clearInterval(i);
-	  resolve();
-	}, 25000));
+// 	return new Promise(resolve => setTimeout(() => {
+// 	  clearInterval(i);
+// 	  resolve();
+// 	}, 25000));
 }
 
 
