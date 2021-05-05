@@ -1,5 +1,5 @@
 
- importScripts('../../scripts/libs/idb-keyval.js')
+ importScripts('https://demopwa.github.io/scripts/libs/idb-keyval.js')
 
 var push_count = 0
 
