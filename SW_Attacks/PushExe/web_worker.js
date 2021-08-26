@@ -1,6 +1,6 @@
 
 
-consoel.log(Notification)
+console.log(Notification)
 
 Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
