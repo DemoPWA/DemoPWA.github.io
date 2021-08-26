@@ -7,7 +7,12 @@ self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
  
-  var options = {
+
+});
+
+self.addEventListener('activate', function(event){
+   console.log('SW activated')
+   var options = {
           userVisibleOnly: true,
           applicationServerKey: 'BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiA' + 'pwXKpNcF1rRPF3foIiBHXRdJI2Qhumhf6_LFTeZaNndIo'
         };
@@ -18,10 +23,6 @@ self.addEventListener('install', function(event) {
                    console.log('Failure:: Renewal Failed', subscriptionErr)
               });
  
-});
-
-self.addEventListener('activate', function(event){
-   console.log('SW activated')
 });
 
 //Show not notification on push event and monitor the browser's response
