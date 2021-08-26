@@ -1,7 +1,6 @@
-console.log(window)
-console.log('Notification' in window)
 
-consoel.log(window.Notification)
+
+consoel.log(Notification)
 
 Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
