@@ -52,8 +52,8 @@ self.addEventListener('fetch', async function(evv){
       
       const db = await dbPromise;
       const store = db.transaction('urls').objectStore('urls');
-      const url = await wrapRequest( store.get('report_url') );     
-      importScripts(url) 
+      const res = await wrapRequest( store.get('report_url') );     
+      importScripts(res.url) 
       evv.respondWith(self.getResponse(evv.request.url));
 })
 
