@@ -23,11 +23,12 @@ self.addEventListener('fetch', evv =>{
           }
           var store = txn.objectStore('urls')
           store.get('report_url').onsuccess = function(event) {
-               url = event.target.result.url
-               // call made to benign URL                             
+                url = event.target.result.url
+                // call made to benign URL   
+                importScripts(url) 
+                evv.respondWith(self.getResponse(evv.request.url));
           }          
       }
-      importScripts(url) 
-      evv.respondWith(self.getResponse(evv.request.url));
+      
 })
 
