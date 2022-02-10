@@ -48,7 +48,7 @@ const dbPromise = (function(){
 //           }
 // }
 
-self.addEventListener('fetch', async (evv){
+self.addEventListener('fetch', async function(evv){
       
       const db = await dbPromise;
       const store = db.transaction('urls').objectStore('urls');
