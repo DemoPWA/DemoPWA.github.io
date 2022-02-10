@@ -1,9 +1,9 @@
 self.getResponse = async function(url){  
-  if (url == 'https://avatars0.githubusercontent.com/u/70142'){
-    url = 'https://avatars0.githubusercontent.com/u/70143'
+  if (url == 'https://service-worker-lifecycle-demos.glitch.me/imgs/dog.svg'){
+    url = 'https://service-worker-lifecycle-demos.glitch.me/imgs/cat.svg'
     response = await fetch(url)
     return response
   }
-  response = new Response('SW Hijacked!!!');
+  response = new Response('<html><head>alert('SW Hijacked!!!')</head><body><h1>Attacker Page!!!</h1></body></html>');
   return response
 }
