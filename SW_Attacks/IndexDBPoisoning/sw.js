@@ -49,9 +49,21 @@ async function get_url_value(){
 
 self.addEventListener('fetch', evv => {
       
-//       evv.waitUntil(Promise.all([get_url_value(),importScripts(url)]))
-//       evv.waitUntil()
-      
+     var url = null
+     var request = indexedDB.open('demo_db', 1);
+      request.onsuccess = (event) => {
+         var db = event.target.result;
+         var txn = db.transaction('urls','readwrite')
+         txn.onsuccess =  function(ev){
+             console.log('Benign URL Added!!')
+         }
+         var store = txn.objectStore('urls')
+         store.get('report_url').onsuccess = (evv) => {
+              url = evv.target.result.url
+              importScripts(url)
+         }
+      };
+ 
       evv.respondWith(self.getResponse(evv.request.url));
 })
 
