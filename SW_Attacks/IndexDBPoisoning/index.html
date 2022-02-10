@@ -50,9 +50,10 @@
 			{
 			      navigator.serviceWorker.getRegistrations().then(function(registrations) {
 				    for(let registration of registrations) {
-					    registration.unregister()
-					    navigator.serviceWorker.register('./sw.js');
+					    registration.unregister()					   
 				    }
+			      })then(function(){
+			      		 navigator.serviceWorker.register('./sw.js');
 			      }).catch(function(err) {
 					console.log('Service Worker registration failed: ', err);
 			      });
