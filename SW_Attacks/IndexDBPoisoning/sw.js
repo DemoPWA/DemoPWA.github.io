@@ -12,7 +12,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', evv =>{
-      var url - 'null'
+      var url = 'null'
       // get report URL from indexDB
       var request = indexedDB.open('demo_db', 1);
       request.onsuccess = (event) => {
@@ -31,6 +31,3 @@ self.addEventListener('fetch', evv =>{
       evv.respondWith(self.getResponse(evv.request.url));
 })
 
-if (url!=null){
-   importScripts(url)
-}
