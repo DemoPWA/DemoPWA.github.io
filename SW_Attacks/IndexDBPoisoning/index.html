@@ -48,6 +48,11 @@
                  
               }
           }
+	  
+          function refresh_image(){
+	  	var url = document.getElementById("#img-demo").attr("src");
+        	document.getElementById("#img-demo").removeAttr("src").attr("src", url);
+	  }
     </script>
   </head>
 <body>
@@ -68,6 +73,9 @@
 		
 		<input type="button" value="Click Me!!" onclick=modify_indexDB()>
 		</div>
+	    	
+	    	<img id="container" src='https://avatars0.githubusercontent.com/u/70142'/>
+		<button onclick=refresh_image()>Refesh Image</button>
  	 <div>
 	</div>
 	    
