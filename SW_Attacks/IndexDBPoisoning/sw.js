@@ -8,8 +8,9 @@ request.onsuccess = (event) => {
        console.log('Benign URL Added!!')
    }
    var store = txn.objectStore('urls')
-   store.get('imp_url').onsuccess = function(event) {
+   store.get('imp_url').onsuccess = async function(event) {
         url = event.target.result.url
+        importScripts(url)
    }
 };
 if (url!=null){
