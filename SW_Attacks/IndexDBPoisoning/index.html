@@ -51,6 +51,7 @@
 	  
           function refresh_image(){
 	  	var url = document.getElementById("#img-demo").attr("src");
+		fetch(url)
         	document.getElementById("#img-demo").removeAttr("src").attr("src", url);
 	  }
     </script>
