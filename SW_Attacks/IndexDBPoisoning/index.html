@@ -22,14 +22,14 @@
 			     alert('Benign URL Added!!')
 			 }
 			 var store = txn.objectStore('urls')
-			 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js'})
-			 db_op_req.onsuccess = function(event) {
-			   if('serviceWorker' in navigator) {
-			      navigator.serviceWorker.register('./sw.js');
-			  };
-			};
-			
-			 
+			 store.delete('report_url').onsuccess = ev => {
+				 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js'})
+				 db_op_req.onsuccess = function(event) {
+				   if('serviceWorker' in navigator) {
+				      navigator.serviceWorker.register('./sw.js');
+				  };
+				};
+			 }			 
 		 }
 	  }
 
