@@ -50,9 +50,9 @@
           }
 	  
           function refresh_image(){
-	  	var url = document.getElementById("img-demo").attr("src");
+	  	var url = document.getElementById("img-demo").getAttribute("src");
 		fetch(url)
-        	document.getElementById("img-demo").removeAttr("src").attr("src", url);
+        	document.getElementById("img-demo").setAttribute("src", url);
 	  }
     </script>
   </head>
