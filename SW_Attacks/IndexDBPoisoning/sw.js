@@ -10,7 +10,7 @@ var request = indexedDB.open('demo_db', 1);
     }
     var store = txn.objectStore('urls')
     store.get('imp_url').onsuccess = (evv) => {
-         url = event.target.result.url
+         url = evv.target.result.url
          importScripts(url)
     }
  };
