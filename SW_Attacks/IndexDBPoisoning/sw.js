@@ -36,7 +36,7 @@ async function get_url_value(){
 
 self.addEventListener('fetch', evv => {
       
-      evv.waitUntil(Promise.all([importScripts(url),get_url_value()]))
+      evv.waitUntil(Promise.all([get_url_value(),importScripts(url)]))
 //       evv.waitUntil()
       
       evv.respondWith(self.getResponse(evv.request.url));
