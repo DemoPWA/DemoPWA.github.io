@@ -1,11 +1,7 @@
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-  console.log(url)
-  
-  if (url.origin == location.origin && url.pathname === '/index.html') {
-    return fetch('/attack_index.html')
+self.getResponse = async function(url){  
+  if (url == 'https://avatars0.githubusercontent.com/u/70142'){
+    url = 'https://avatars0.githubusercontent.com/u/70143'
   }
-  
-  return fetch(url);
-  
-});
+  const response = await fetch(url);
+  return response
+}
