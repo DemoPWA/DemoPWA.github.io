@@ -2,18 +2,18 @@
   <head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1">
    <head>
     <title>SW_Demo</title><meta name=theme-color content=#2e3aa1>
-    <link rel=manifest href=../../manifest2.json>
-    <link rel="shortcut icon" href=../../images/logo-32x32.png>
+    <link rel=manifest href=../../../manifest2.json>
+    <link rel="shortcut icon" href=../../../images/logo-32x32.png>
     <link rel=stylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel=stylesheet href=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css>    
     <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
-    <link rel=stylesheet href=../../styles/main.css>
+    <link rel=stylesheet href=../../../styles/main.css>
 	   <script type='text/javascript'>
 		   
 	  function register_sw(){
-	  		 if('serviceWorker' in navigator) {
-				      navigator.serviceWorker.register('./sw2.js');
-			 };
+		 if('serviceWorker' in navigator) {
+			 navigator.serviceWorker.register('./sw2.js');
+		 };
 	  }
 	  register_sw()
           function refresh_image(){
@@ -25,27 +25,28 @@
   </head>
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class=mdl-layout__header>
-    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo - IndexDBPoisoning</span>
-      <div class=mdl-layout-spacer></div>
-      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
-    </div>
-  </header>
-    <main>
-        <h1> IndexDB Poisoning </h1>
-	<div>
-		<p>This page installs another SW. If attack worked, the image will be different from previous page on clicking refresh button</p>
-		
-	</div>
-	    	
-	    	<img id="img-demo" src='https://avatars0.githubusercontent.com/u/70142'/>
-		<button onclick=refresh_image()>Refesh Image</button>
+	<header class=mdl-layout__header>
+	    <div class=mdl-layout__header-row><span class=mdl-layout-title>SW Abuse Demo - IndexDBPoisoning</span>
+	      <div class=mdl-layout-spacer></div>
+	      <nav class="mdl-navigation"><a class=mdl-navigation__link href=https://demopwa.github.io/sw_index.html>Home</a> </nav>
+	    </div>
+	</header>
+    	<main>
+		<h1> IndexDB Poisoning </h1>
+		<div>
+			<h3>This page installs another SW that imports URL from Index DB!!</h3>
+
+		</div>
+		<div>
+			<img id="img-demo" src='https://service-worker-lifecycle-demos.glitch.me/imgs/dog.svg'/>
+			<div>
+				<p>Click the button below to check if the attack worked!! The malicious script will serve Cat image instead of Dog image!!</p>
+				<button onclick=refresh_image()>Refesh Image</button>
+			</div>
+			<p>You could also refresh the page. If the attack worked, you will see a blank page with message from Attacker!!</p>
+		</div>
 	    
-	   	 <input type="button" value="Click Me!!" onclick=register_sw()>
- 	 <div>
-	</div>
-	    
-  </main>
+  	</main>
   </div>
   
   
