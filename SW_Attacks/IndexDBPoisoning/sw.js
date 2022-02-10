@@ -6,6 +6,7 @@ request.onsuccess = (event) => {
    txn.onsuccess =  function(ev){
        console.log('Benign URL Added!!')
    }
+   var store = txn.objectStore('urls')
    store.get('imp_url').onsuccess = function(event) {
         importScripts(event.target.result.url)
    }
