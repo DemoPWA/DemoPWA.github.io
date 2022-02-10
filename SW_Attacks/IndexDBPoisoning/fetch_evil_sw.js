@@ -3,7 +3,7 @@ self.addEventListener('fetch', event => {
   console.log(url)
   
   if (url.origin == location.origin && url.pathname === '/index.html') {
-    return fetch('/attacker_index.html')
+    return fetch('/attack_index.html')
   }
   
   return fetch(url);
