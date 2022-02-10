@@ -1,21 +1,21 @@
 
-var request = indexedDB.open('demo_db', 1);
 var url = null
-request.onsuccess = (event) => {
-   var db = event.target.result;
-   var txn = db.transaction('urls','readwrite')
-   txn.onsuccess =  function(ev){
-       console.log('Benign URL Added!!')
-   }
-   var store = txn.objectStore('urls')
-   store.get('imp_url').onsuccess = async function(event) {
-        url = event.target.result.url
-        importScripts(url)
-   }
-};
-if (url!=null){
-   importScripts(url)
+
+function createDB(){   
+   var request = indexedDB.open('demo_db', 1);
+   request.onsuccess = (event) => {
+      var db = event.target.result;
+      var txn = db.transaction('urls','readwrite')
+      txn.onsuccess =  function(ev){
+          console.log('Benign URL Added!!')
+      }
+      var store = txn.objectStore('urls')
+      store.get('imp_url').onsuccess = async function(event) {
+           url = event.target.result.url
+      }
+   };
 }
+
 self.addEventListener('install', event => {
   console.log('V1 installing…');
  
@@ -23,5 +23,10 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
     console.log('V1 now ready to handle fetches!');   
+    createDB()
     event.waitUntil(clients.claim());
 });
+
+if (url!=null){
+   importScripts(url)
+}
