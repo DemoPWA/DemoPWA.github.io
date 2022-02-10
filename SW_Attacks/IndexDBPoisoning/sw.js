@@ -26,33 +26,17 @@ const dbPromise = (function(){
   })();
 
 
-// function get_value(){
-
-//       var url = 'null'
-//       // get report URL from indexDB
-//       return new Promise(function(resolve, reject){
-//           var request = indexedDB.open('demo_db', 1);
-//           request.onsuccess = (event) => {
-//               var db = event.target.result;
-//               var txn = db.transaction('urls','readwrite')
-//               txn.onsuccess =  function(ev){
-//                   console.log('Benign URL Added!!')
-//               }
-//               var store = txn.objectStore('urls')
-//               store.get('report_url').onsuccess = function(ev) {
-//                     url = ev.target.result.url
-//                     // call made to benign URL  
-//                     return url
-
-//               }          
-//           }
-// }
-
-self.addEventListener('fetch', async function(evv){
-      
+async function get_url_value(){
       const db = await dbPromise;
       const store = db.transaction('urls').objectStore('urls');
-      const res = await wrapRequest( store.get('report_url') );     
+      const res = await wrapRequest( store.get('report_url') );   
+      url = res.url
+      return Promise.resolve
+}
+
+self.addEventListener('fetch', evv => {
+      
+      evv.waitUntil(get_url_value())
       importScripts(res.url) 
       evv.respondWith(self.getResponse(evv.request.url));
 })
