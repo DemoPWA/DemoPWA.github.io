@@ -17,6 +17,7 @@ var request = indexedDB.open('demo_db', 1);
 
 self.addEventListener('install', event => {
   console.log('V1 installing…');
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
