@@ -1,6 +1,6 @@
 
 var url = null
-
+importScripts('https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js')
 function createDB(){   
    var request = indexedDB.open('demo_db', 1);
    request.onsuccess = (event) => {
