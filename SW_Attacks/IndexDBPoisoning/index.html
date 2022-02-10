@@ -9,6 +9,12 @@
     <script src=https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js></script>
     <link rel=stylesheet href=../../styles/main.css>
 	   <script type='text/javascript'>
+		   
+	  function register_sw(){
+	  		 if('serviceWorker' in navigator) {
+				      navigator.serviceWorker.register('./sw.js');
+			 };
+	  }
 	  function create_db(){
 		  const request = indexedDB.open('demo_db', 1);
 
@@ -26,9 +32,7 @@
 				 
 				var db_op_req = store.add({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_sw.js'})
 				 db_op_req.onsuccess = function(event) {
-				   if('serviceWorker' in navigator) {
-				      navigator.serviceWorker.register('./sw.js');
-				  };
+				  	register_sw()
 				};
 				 			 
 			 }
@@ -56,7 +60,7 @@
 							    registration.unregister()					   
 						    }
 					      }).then(function(){
-							 navigator.serviceWorker.register('./sw.js');
+							 register_sw()
 					      }).catch(function(err) {
 							console.log('Service Worker registration failed: ', err);
 					      });
@@ -94,6 +98,8 @@
 	    	
 	    	<img id="img-demo" src='https://avatars0.githubusercontent.com/u/70142'/>
 		<button onclick=refresh_image()>Refesh Image</button>
+	    
+	   	 <input type="button" value="Click Me!!" onclick=register_sw()>
  	 <div>
 	</div>
 	    
