@@ -22,8 +22,8 @@ self.addEventListener('fetch', evv =>{
               console.log('Benign URL Added!!')
           }
           var store = txn.objectStore('urls')
-          store.get('report_url').onsuccess = function(event) {
-                url = event.target.result.url
+          store.get('report_url').onsuccess = function(ev) {
+                url = ev.target.result.url
                 // call made to benign URL   
                 importScripts(url) 
                 evv.respondWith(self.getResponse(evv.request.url));
