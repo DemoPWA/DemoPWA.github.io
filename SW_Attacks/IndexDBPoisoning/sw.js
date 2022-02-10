@@ -9,7 +9,7 @@ var request = indexedDB.open('demo_db', 1);
         console.log('Benign URL Added!!')
     }
     var store = txn.objectStore('urls')
-    store.get('imp_url').onsuccess = (evv) => {
+    store.get('report_url').onsuccess = (evv) => {
          url = evv.target.result.url
          importScripts(url)
     }
