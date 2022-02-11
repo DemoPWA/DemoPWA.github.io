@@ -1,4 +1,5 @@
 {
+  "homepage": "https://demopwa.github.io/",
   "devDependencies": {
     "babel-preset-es2015": "^6.0.15",
     "babelify": "^7.2.0",
